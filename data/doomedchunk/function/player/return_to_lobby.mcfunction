@@ -35,5 +35,13 @@ scoreboard players reset @s death_number
 # 満腹度の自動回復
 effect give @s minecraft:saturation infinite 0 true
 
-# 終了
-return 1
+# マッチタイマーが生きていたらここで終了
+execute if entity @e[tag=matchTimer] \
+        run return 1
+
+# 管理者にゲーム開始トリガーを配る
+execute if entity @s[tag=admin] run function doomedchunk:lobby/get_admin_book
+execute if entity @a[tag=admin] run return 2
+# 一時管理者にゲーム開始トリガーを配る
+execute if score @s temp_admin matches 1.. run function doomedchunk:lobby/get_admin_book
+return 3
