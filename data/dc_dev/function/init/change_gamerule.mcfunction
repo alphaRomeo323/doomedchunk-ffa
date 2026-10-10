@@ -21,6 +21,9 @@ gamerule doMobSpawning false
 # doPatrolSpawning
 gamerule doPatrolSpawning false
 
+# doTileDrops => false
+gamerule doTileDrops false
+
 # doVinesSpread => false
 gamerule doVinesSpread false
 
