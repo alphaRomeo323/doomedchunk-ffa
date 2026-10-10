@@ -16,27 +16,6 @@
                     ]
                 }
             ]
-        },
-        {
-            "bonus_rolls": 0.0,
-            "rolls": 1,
-            "entries":[
-                {
-                    "type": "minecraft:item",
-                    "name": "tacz:ammo",
-                    "functions":[
-                        {
-                            "function":"set_custom_data",
-                            "tag": "{AmmoId: \"tacz:50bmg\"}"
-                        },
-                        {
-                            "add": false,
-                            "count": 10,
-                            "function": "minecraft:set_count"
-                        }
-                    ]
-                }
-            ]
         }
     ]
 }
