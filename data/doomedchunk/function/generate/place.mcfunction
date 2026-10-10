@@ -18,7 +18,7 @@ execute unless data storage doomedchunk:rollback extend \
 $execute if data storage doomedchunk:rollback extend \
     positioned $(pos_x) $(pos_y) $(pos_z) \
     run worldborder center ~96 ~96
-execute unless data storage doomedchunk:rollback extend \
+execute if data storage doomedchunk:rollback extend \
     run worldborder set 160
 
 # placeコマンドによるロールバック
