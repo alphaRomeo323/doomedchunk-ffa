@@ -1,0 +1,44 @@
+name: Datapack Release Workflow
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Releaseのタグをチェックアウト
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name }}
+          persist-credentials: false
+
+      - name: 不要なファイルを除外してZIPを作成
+        run: |
+          mkdir -p "$RUNNER_TEMP/release-package"
+
+          rsync -av \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='.gitignore' \
+            --exclude='*.md' \
+            --exclude='*.markdown' \
+            ./ "$RUNNER_TEMP/release-package/"
+
+          cd "$RUNNER_TEMP/release-package"
+          zip -r "$RUNNER_TEMP/doomedchunk-ffa.zip" .
+
+      - name: ReleaseにZIPを添付
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          gh release upload "$RELEASE_TAG" \
+            "$RUNNER_TEMP/doomedchunk-ffa.zip" \
+            --repo "$GITHUB_REPOSITORY" \
+            --clobber

@@ -55,7 +55,7 @@
         {map_name:"doomedchunk:foo", pos_x:0, pos_y:48, pos_z:128}
         ```
         192x48x192ブロックでマップを制作した場合、`extend`の項目も追加で生成します。挿入する値は問いません
-    - **`doomedchunk:respawn`**  
+    - **`doomedchunk:respawn_point`**  
         リスポーン地点に関する情報がここに格納されます。数値は少数で指定します
         ```
         {in_game:{
