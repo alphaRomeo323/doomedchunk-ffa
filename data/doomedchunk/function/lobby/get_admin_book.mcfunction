@@ -1,4 +1,4 @@
-### dc_dev:get_book 管理者用の本を入手する
+### doomedchunk:lobby/get_admin_book 管理者用の本を入手する
 
 # トリガーを有効化
 scoreboard players enable @s start

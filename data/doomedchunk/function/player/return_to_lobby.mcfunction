@@ -8,7 +8,7 @@ title @s actionbar {"text":"ロビーに戻ります...","color":"aqua"}
 gamemode adventure @s
 
 # アイテムクリア
-clear @a
+clear @s
 
 # ロビーの中心に戻す
 $teleport @s $(pos_x) $(pos_y) $(pos_z) $(rotation) 0

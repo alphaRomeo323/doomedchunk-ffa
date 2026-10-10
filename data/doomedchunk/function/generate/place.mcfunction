@@ -9,6 +9,18 @@ $execute if data storage doomedchunk:rollback extend \
     if score #kill_entity preset matches 1.. \
     run kill @e[type=!minecraft:player, type=!minecraft:marker, x=$(pos_x),y=$(pos_y),z=$(pos_z), dx=192,dy=48,dz=192]
 
+# ワールドボーダーの中心と範囲を設定
+$execute unless data storage doomedchunk:rollback extend \
+    positioned $(pos_x) $(pos_y) $(pos_z) \
+    run worldborder center ~72 ~72
+execute unless data storage doomedchunk:rollback extend \
+    run worldborder set 112
+$execute if data storage doomedchunk:rollback extend \
+    positioned $(pos_x) $(pos_y) $(pos_z) \
+    run worldborder center ~96 ~96
+execute unless data storage doomedchunk:rollback extend \
+    run worldborder set 160
+
 # placeコマンドによるロールバック
 $execute positioned $(pos_x) $(pos_y) $(pos_z) positioned ~0 ~0 ~0 run place template $(map_name)_1_1 ~ ~ ~
 $execute positioned $(pos_x) $(pos_y) $(pos_z) positioned ~0 ~0 ~48 run place template $(map_name)_1_2 ~ ~ ~

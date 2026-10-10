@@ -22,10 +22,9 @@ execute as @a[team=wait,gamemode=spectator] \
         run function doomedchunk:display/stop_observe
 
 # ゲーム開始トリガーを配る
-scoreboard players enable @a[scores={temp_admin=1..}] start
-loot give @a[scores={temp_admin=1..}] loot doomedchunk:start
 scoreboard players enable @a[tag=admin] start
-loot give @a[tag=admin] loot doomedchunk:start
+execute unless entity @a[tag=admin] \
+        run scoreboard players enable @a[scores={temp_admin=1..}] start
 
 # マッチレベルを再設定
 execute store result score #matchLevel match_level \

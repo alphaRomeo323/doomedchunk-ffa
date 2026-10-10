@@ -43,7 +43,7 @@
 ### Outpost in Plane
 前哨基地"から"狙うか、はたまた前哨基地"を"狙うか
 
-[Download](https://dir.hakuteialpha.com/doomedchunk/maps/outpost/dc_outpost_in_plains-v0.10.2.zip)
+[Download](https://dir.hakuteialpha.com/doomedchunk/maps/outpost/dc_outpost_in_plains-v0.10.3.zip)
 
 ## 新規マップ開発
 
