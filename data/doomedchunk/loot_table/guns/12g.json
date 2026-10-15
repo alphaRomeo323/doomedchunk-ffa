@@ -55,14 +55,8 @@
             "rolls": 1,
             "functions":[
                 {
-                    "function":"set_enchantments",
-                    "conditions":[{
-                        "condition": "minecraft:random_chance",
-                        "chance": 0.3
-                    }],
-                    "enchantments":{
-                        "minecraft:vanishing_curse": 1
-                    }
+                    "function":"minecraft:reference",
+                    "name": "doomedchunk:enchantments/random_vanishing"
                 }
             ],
             "entries":[
