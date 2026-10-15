@@ -1,0 +1,26 @@
+[
+    {
+        "function": "minecraft:set_name",
+        "name":{
+            "translate": "tacz.gun.ak47.name",
+            "italic":false,
+            "color": "yellow"
+        }
+    },
+    {
+        "function":"set_custom_data",
+        "tag": "{HasBulletInBarrel:true, GunFireMode:\"AUTO\", GunId:\"tacz:ak47\", GunCurrentAmmoCount:30}"
+    },
+        {
+        "function":"set_custom_data",
+        "tag":"{AttachmentSCOPE:{components:{\"minecraft:custom_data\":{AttachmentId:\"tacz:scope_elcan_4x\"}},count:1, id:\"tacz:attachment\"}}"
+    },
+    {
+        "function":"set_custom_data",
+        "tag":"{AttachmentSTOCK:{components:{\"minecraft:custom_data\":{AttachmentId:\"tacz:stock_sba3\"}},count:1, id:\"tacz:attachment\"}}"
+    },
+    {
+        "function":"set_custom_data",
+        "tag":"{AttachmentMUZZLE:{components:{\"minecraft:custom_data\":{AttachmentId:\"tacz:muzzle_compensator_trident\"}},count:1, id:\"tacz:attachment\"}}"
+    }
+]
