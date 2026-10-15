@@ -14,5 +14,9 @@
     {
         "function":"set_custom_data",
         "tag":"{AttachmentSCOPE:{components:{\"minecraft:custom_data\":{AttachmentId:\"tacz:sight_coyote\"}},count:1, id:\"tacz:attachment\"}}"
+    },
+    {
+        "function":"set_custom_data",
+        "tag":"{AttachmentEXTENDED_MAG:{components:{\"minecraft:custom_data\":{AttachmentId:\"tacz:extended_mag_1\"}},count:1, id:\"tacz:attachment\"}}"
     }
 ]
