@@ -11,12 +11,12 @@ $execute if data storage doomedchunk:rollback extend \
 
 # ワールドボーダーの中心と範囲を設定
 $execute unless data storage doomedchunk:rollback extend \
-    positioned $(pos_x) $(pos_y) $(pos_z) \
+    positioned $(pos_x).0 $(pos_y).0 $(pos_z).0 \
     run worldborder center ~72 ~72
 execute unless data storage doomedchunk:rollback extend \
     run worldborder set 112
 $execute if data storage doomedchunk:rollback extend \
-    positioned $(pos_x) $(pos_y) $(pos_z) \
+    positioned $(pos_x).0 $(pos_y).0 $(pos_z).0 \
     run worldborder center ~96 ~96
 execute if data storage doomedchunk:rollback extend \
     run worldborder set 160

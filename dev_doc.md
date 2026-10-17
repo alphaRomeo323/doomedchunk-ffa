@@ -27,7 +27,7 @@
 
 ### 必要な情報の設定
 
-ソースコードのzipファイルをダウンロードし、中に入っている`doomedchunk-ffa-<version>`フォルダを`<ワールドファイル>/datapacks`に配置したら、以下のセットアップを行います
+Releaseからダウンロードした`doomedchunk-ffa.zip`を`saves/<ワールドファイル>/datapacks`に配置したら、以下のセットアップを行います
 
 5. **ゲームルール、スコアボード、チームのセットアップを行う**  
     以下のコマンドで一括で設定します  
@@ -127,13 +127,65 @@
     ```
     /function dc_dev:disable
     ```
-- Q: **不具合調査のためコマンドログを表示したい**  
+### デバッグ関連
+- **コマンドログを表示する**  
 　doomedchunkが稼働中、`sendCommandFeedback`のゲームルールが自動で`false`になります  
 　以下のコマンドで、リロードかワールド再読み込みされるまでこのゲームモードを`true`に戻します
   ```
   /gamerule sendCommandFeedback true
   ```
+- Q: **デバッグモードを使用する**  
+　doomedchunkが稼働中、`reducedDebugInfo`のゲームルールが自動で`true`になります。  
+  これにより、デバッグモードでの座標表示、ブロック座標表示、F3+Gによるチャンク境界表示、F3+Bによる当たり判定表示等が無効化されます。  
+　以下のコマンドで、リロードかワールド再読み込みされるまでこのゲームモードを`false`に戻します
+  ```
+  /gamerule reducedDebugInfo false
+  ```
+- Q: **ゲーム中状態に切り替える**  
+  マッチに参加しているプレイヤーであることを示す`in_game`チームはチートによる不正参加やマッチ中の途中離脱を検知するシステムを実装しています。  
+  デバッグのため、これを無効にするには、ダミープレイヤー`#ignore_match_level`の`preset`を1以上に設定します。
+  ```
+  /scoreboard players set #ignore_match_level preset 1
+  ```
+  この状態にすると、`in_game`チームに制限なくjoinすることが可能になります。  
+  ```
+  /team join in_game @p
+  ```
+  再度有効にする際はこの値をリセットしてください
+  ```
+  /scoreboard players reset #ignore_match_level preset
+  ```
 
-## ゲームをカスタマイズする
+## データパックをカスタマイズする
 
-編集中
+### 足場や赤砂を設置可能なブロック・シャベルで破壊可能なブロックを設定する
+
+設置可能ブロックはブロックタグ`#doomdechunk:scaffolding_placeable`, 破壊可能ブロックはブロックタグ`#doomedchunk:breakable`でそれぞれ管理しています。  
+この2つのブロックタグを上書きすることで、設置可能ブロック・破壊可能ブロックを変更できます
+
+### ルートテーブルを上書きする
+
+バランス調整や、登場する武器を切り替える場合は、以下のloot_tableを上書きしてください
+- **基本ルート**: `doomedchunk:chests/default`
+- **スペシャルルート**: `doomedchunk:chests/special`
+- **各弾薬ごとの出現率**: `doomedchunk:guns`
+- **銃**(弾薬ごと): `doomedchunk:guns/<使用弾薬>`
+  - 例: 9mm弾なら、`doomedchunk:guns/9mm`
+- **投擲物**: `doomedchunk:projectiles`
+- **食料・ライフシールド**: `doomedchunk:consumables`
+- **バフポーション**: `doomedchunk:buff_potions`
+- **防具**: `doomedchunk:armor`
+- **その他**: `doomedchunk:equipments`
+
+### 破壊ツールをツルハシに交換する
+地下マップなど、破壊ツールがツルハシだと都合がいい場合があります。その際は、ブロックタグ`#doomedchunk:breakable`を上書きすると同時に、装備ルートテーブルをツルハシに対応したバージョンに置き換えてください
+
+`doomedchunk:chests/default`を以下のように上書きします
+```json:line-numbers {34}
+                {
+                    "type": "minecraft:loot_table",
+                    "value": "doomedchunk:equipments", // [!code --]
+                    "value": "doomedchunk:equipments/pickaxe", // [!code ++]
+                    "weight": 3
+                },
+```
