@@ -15,6 +15,12 @@ execute if score #players calc matches ..3 \
 scoreboard players operation @a[team=in_game] match_level \
                                 = #matchLevel match_level
 
+# change_pickaxeが1以上なら破壊ツールをツルハシに置き換える
+execute if score #change_pickaxe preset matches 1.. \
+        run tag @a[team=in_game] add pickaxe
+execute unless score #change_pickaxe preset matches 1.. \
+        run tag @a[team=in_game] remove pickaxe
+
 # インベントリクリア
 clear @a[team=in_game]
 
